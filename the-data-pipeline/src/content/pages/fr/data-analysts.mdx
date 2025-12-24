@@ -1,0 +1,28 @@
+---
+title: "Fournir des Informations Exploitables"
+subtitle: "Data Analysts"
+summaryRole: "Fournir des informations exploitables spécifiques aux besoins actuels des utilisateurs finaux en utilisant les données traitées en amont"
+summaryTools: "Un outil de business intelligence tel que Tableau, pour créer des tableaux de bord"
+prevPage:
+  title: "Analytics Engineers"
+  url: "analytics-engineers"
+nextPage:
+  title: "Data Scientists"
+  url: "data-scientists"
+---
+import Summary from '../../../components/Summary.astro';
+export const { summaryRole, summaryTools } = frontmatter;
+
+<Summary role={summaryRole} tools={summaryTools} />
+
+### Contents
+
+Les **Data Analysts**
+
+* Discutent avec les utilisateurs finaux à la recherche d'informations pour comprendre leurs besoins et les traduire en une analyse rigoureuse.
+* Ils extraient des données de la couche gold et effectuent des manipulations spécifiques à la question à laquelle ils répondent.
+* Enfin, ils communiquent les informations qu'ils obtiennent, généralement via des tableaux de bord ou des rapports et présentations ad hoc.
+
+Avec les Data Scientists, ils sont responsables de l'un des derniers « conduits » du Pipeline de Données – la communication d'informations exploitables qui apportent de la valeur à l'organisation. Le plus souvent, ils apportent de la valeur en réduisant l'incertitude pour les décideurs.
+
+Contrairement aux Data Engineers, Analytics Engineers et Data Scientists, leur travail est souvent situationnel : leurs analyses sont fréquemment ponctuelles et suivent les besoins actuels de l'organisation.

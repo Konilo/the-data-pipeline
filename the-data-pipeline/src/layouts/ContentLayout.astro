@@ -1,0 +1,148 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import MainLayout from './MainLayout.astro';
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+  entry: CollectionEntry<'pages'>;
+  lang: 'en' | 'fr';
+}
+
+const { entry, lang } = Astro.props;
+const { Content } = await entry.render();
+const { title, subtitle, prevPage, nextPage } = entry.data;
+
+const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
+---
+
+<MainLayout title={pageTitle} lang={lang}>
+  <Navigation />
+  
+  <main>
+    <div class="container">
+      <h1>{title}</h1>
+      {subtitle && <h2 class="subtitle">{subtitle}</h2>}
+      
+      <div class="content-wrapper">
+        <Content />
+      </div>
+
+      {(prevPage || nextPage) && (
+        <div class="nav-buttons">
+          {prevPage && (
+            <a href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith('/') ? '' : '/'}${lang === 'fr' ? 'fr/' : ''}${prevPage.url}`} class="prev-button">
+              ← Previous: {prevPage.title}
+            </a>
+          )}
+          {nextPage && (
+            <a href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith('/') ? '' : '/'}${lang === 'fr' ? 'fr/' : ''}${nextPage.url}`} class="next-button">
+              Next: {nextPage.title} →
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </main>
+</MainLayout>
+
+<style>
+  main {
+    padding: 3rem 2rem;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-accent);
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .content-wrapper :global(h3) {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-wrapper :global(h4) {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+  }
+
+  .content-wrapper :global(p) {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .content-wrapper :global(ul) {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-wrapper :global(li) {
+    margin-bottom: 0.75rem;
+  }
+
+  .content-wrapper :global(strong) {
+    color: var(--color-accent);
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 1rem;
+  }
+
+  .prev-button,
+  .next-button {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-accent);
+    color: white;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .prev-button:hover {
+    background: var(--color-accent-hover);
+    transform: translateX(-5px);
+    text-decoration: none;
+  }
+
+  .next-button:hover {
+    background: var(--color-accent-hover);
+    transform: translateX(5px);
+    text-decoration: none;
+  }
+
+  .next-button {
+    margin-left: auto;
+  }
+
+  @media (max-width: 768px) {
+    .nav-buttons {
+      flex-direction: column;
+    }
+    
+    .next-button {
+      margin-left: 0;
+    }
+  }
+</style>

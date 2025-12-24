@@ -1,0 +1,41 @@
+---
+title: "La Source du Flux de Données"
+subtitle: "Data Engineers"
+summaryRole: "Collecter les données brutes utiles pour la génération d'informations (après traitement en aval) à partir de diverses sources ; mettre en place l'infrastructure technique utilisée par l'équipe Data"
+summaryTools: "Langages de programmation de script tels que Python utilisés pour construire les pipelines d'ingestion de données"
+prevPage:
+  title: "Découvrir le Pipeline de Données"
+  url: "data-pipeline"
+nextPage:
+  title: "Analytics Engineers"
+  url: "analytics-engineers"
+---
+import Summary from '../../../components/Summary.astro';
+export const { summaryRole, summaryTools } = frontmatter;
+
+<Summary role={summaryRole} tools={summaryTools} />
+
+### Contents
+
+Les organisations souhaitent exploiter toutes les données pertinentes pour leurs activités. Par conséquent, le flux de données avec lequel les Professionnels de la Data travaillent provient de diverses sources. Selon l'organisation, les systèmes sources peuvent être :
+
+- Le logiciel que l'organisation possède, développe et distribue aux clients dont les actions sur le logiciel peuvent être suivies (par exemple YouTube pour Google) ;
+- Les logiciels utilisés par l'organisation, en interne, pour mener ses opérations tels qu'un système de gestion de la relation client (par exemple, Pipedrive), où les interactions entre une entreprise et ses clients sont enregistrées, ou une plateforme d'emailing (par exemple, Mailjet) qui envoie des e-mails et mesure leur efficacité
+- Des systèmes sources tiers fournissant des informations précieuses pour l'organisation telles que les prévisions météorologiques pour les organisations dont les opérations sont affectées par le climat (par exemple, l'agroalimentaire), ou les données financières pour les organisations affectées par les marchés financiers car elles achètent et/ou vendent des matières premières, par exemple.
+
+La collecte de données à partir des systèmes sources est le domaine des **Data Engineers**.
+
+Ils développent le logiciel nécessaire pour collecter ces données de manière opportune et fiable – c'est le premier « conduit » du Pipeline de Données.
+
+Chaque système source diffère des autres dans une dimension ou une autre. Ces dimensions sont :
+
+- L'authentification nécessaire pour obtenir la confiance du système source et accéder aux données,
+- Le format des données,
+- La vitesse et la fréquence à laquelle les données peuvent être collectées,
+- La façon dont les données peuvent être lues, par exemple, est-il possible de lire uniquement certains enregistrements d'intérêt ou est-il seulement possible de télécharger un ensemble de données, qui peut être énorme, complètement ?
+- Le fait que la structure des données peut changer au fil du temps alors que les opérateurs en aval du Pipeline de Données ont besoin de cohérence,
+- Etc.
+
+Les Data Engineers doivent naviguer dans tout cela.
+
+Ils chargent ensuite les données brutes et non traitées sous forme de tables dans une base de données centralisant toutes les données dont l'organisation souhaite extraire de la valeur. Plusieurs conceptions de bases de données centrales existent, chacune avec ses spécificités, mais une variante courante est le Data Warehouse. Il s'agit de la principale « installation de stockage » du Pipeline de Données. Les Data Engineers sont également responsables de la configuration (choix de la technologie de base de données et déploiement de l'infrastructure nécessaire) et des performances (vitesses de lecture et d'écriture) de cette base de données.

@@ -1,0 +1,50 @@
+---
+title: "Turning Bronze into Gold"
+subtitle: "Analytics Engineers"
+summaryRole: "Clean, re-organize, and document the data and compute key metrics (specific to the downstream needs) so that Data Analysts, Data Scientists, and other end users can analyze it efficiently"
+summaryTools: "A data manipulation programming language such as SQL"
+prevPage:
+  title: "Data Engineers"
+  url: "data-engineers"
+nextPage:
+  title: "Data Analysts"
+  url: "data-analysts"
+---
+import Summary from '../../../components/Summary.astro';
+export const { summaryRole, summaryTools } = frontmatter;
+
+<Summary role={summaryRole} tools={summaryTools} />
+
+### Contents
+
+As is, raw data is not ready to yield actionable insights. **Analytics Engineers** are responsible for turning it into cleaned, remodeled, documented data sets ready to be used by Data Analysts and other downstream end users.
+
+The tables stored in a Data Warehouse are often grouped into successive layers. The first is called bronze and holds the raw data provided by Data Engineers.
+
+The data is then processed between each layer in order to progressively reach the state where it is ready for use: it is a progressive refinement process where tables in the bronze layer are transformed into tables of the silver layers which, in turn, are further processed to yield the tables of the gold layer, the final product of the data warehouse.
+
+This process is called data transformation. It consists of several operations.
+
+#### Data Modeling
+
+Raw data comes from various unrelated source systems each with its own rules and idiosyncrasies. Hence, some reshaping of the data is necessary to obtain a set of tables that, despite their sheer number, remains practical for Data Analysts and other end users downstream to work with: all tables are remodeled using a unified paradigm of structuration (defining what each table represents and how it relates to others) and their contents are aligned (units, currencies, entity identifiers, etc. are unified). This design process is called **data modeling**.
+
+It is important because
+
+- (i) it greatly improves the legibility of the data and facilitates the interconnections between the source systems and their tables, from which much value comes from,
+- (ii) it allows the data warehouse to grow in a healthy manner i.e., more source systems and tables can be integrated rapidly
+- (iii) it is designed based on discussions with Data Analysts, Data Scientists, and other end users in order to allow them to answer as many of their questions as possible easily, that is without the need to go back to the raw data and, as much as possible, without the need for deep technical data manipulation skills.
+
+#### Data Validation
+
+Raw data contains invalid information which needs to be detected and filtered out before it reaches end users. Those can be caused by human errors, by bugs somewhere in the source system or in the Data Pipeline, or by some deliberate fraudulent behavior carried out in one the source systems. Those invalidities take the form of duplicated records, typos, or wrong values, for example. Analytics Engineers put in place data transformations to automatically handle known issues and they deploy data validation tests in order to detect as many of the remaining issues.
+
+#### Analytical Transformations
+
+On top of remodeling and cleaning the data, it is also the role of Analytics Engineers to carry out a set of analytical data transformations where atomic units of information (e.g., user X carried out action Y on date Z) is processed into more valuable information. Examples:
+
+- Determining what set of attributes were effective for each user at any point in the past based on atomic attribute change logs;
+- Identifying in-app user activity sessions based on atomic user action logs;
+- More broadly, computing a given key performance indicator used by the organization.
+
+The goal here is to carry out any frequent, important analytical transformation (e.g., metric computation) once in a rigorous way, so that downstream users can simply use a single source of truth instead of carrying out that transformation in a less performant and reliable manner, and potentially in multiple places which introduces parallel realities where a given metric is not measured same way from an end user to the next.

@@ -1,0 +1,28 @@
+---
+title: "Providing Actionable Insights"
+subtitle: "Data Analysts"
+summaryRole: "Deliver actionable insights specific to the end users' current needs using the data processed upstream"
+summaryTools: "A business intelligence tool such as Tableau, to make dashboards"
+prevPage:
+  title: "Analytics Engineers"
+  url: "analytics-engineers"
+nextPage:
+  title: "Data Scientists"
+  url: "data-scientists"
+---
+import Summary from '../../../components/Summary.astro';
+export const { summaryRole, summaryTools } = frontmatter;
+
+<Summary role={summaryRole} tools={summaryTools} />
+
+### Contents
+
+**Data Analysts**
+
+* Discuss with end users looking for insights to understand their needs and translate them into a rigorous analysis.
+* They draw data from the gold layer and carry out manipulations specific to the question they are answering.
+* Finally, they communicate the insights they obtain, usually via dashboards or ad-hoc reports & presentations.
+
+With Data Scientists, they are responsible for one of the last "conduits" of the Data Pipeline – the communication of actionable insights that bring value to the organization. Most commonly, they bring value by reducing uncertainty for decision-makers.
+
+Unlike Data Engineers, Analytics Engineers, and Data Scientists, their work is often situational: their analyses are frequently one-offs that follow the current needs of the organization.

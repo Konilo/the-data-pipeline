@@ -1,0 +1,50 @@
+---
+title: "Transformer le Bronze en Or"
+subtitle: "Analytics Engineers"
+summaryRole: "Nettoyer, réorganiser et documenter les données et calculer les indicateurs clés (spécifiques aux besoins en aval) afin que les Data Analysts, Data Scientists et autres utilisateurs finaux puissent les analyser efficacement"
+summaryTools: "Un langage de programmation de manipulation de données tel que SQL"
+prevPage:
+  title: "Data Engineers"
+  url: "data-engineers"
+nextPage:
+  title: "Data Analysts"
+  url: "data-analysts"
+---
+import Summary from '../../../components/Summary.astro';
+export const { summaryRole, summaryTools } = frontmatter;
+
+<Summary role={summaryRole} tools={summaryTools} />
+
+### Contents
+
+En l'état, les données brutes ne sont pas prêtes à produire des informations exploitables. Les **Analytics Engineers** sont responsables de les transformer en ensembles de données nettoyés, remodelés et documentés, prêts à être utilisés par les Data Analysts et autres utilisateurs finaux en aval.
+
+Les tables stockées dans un Data Warehouse sont souvent regroupées en couches successives. La première est appelée bronze et contient les données brutes fournies par les Data Engineers.
+
+Les données sont ensuite traitées entre chaque couche afin d'atteindre progressivement l'état où elles sont prêtes à l'emploi : c'est un processus de raffinement progressif où les tables de la couche bronze sont transformées en tables des couches silver qui, à leur tour, sont encore traitées pour produire les tables de la couche gold, le produit final du data warehouse.
+
+Ce processus est appelé transformation de données. Il se compose de plusieurs opérations.
+
+#### Modélisation des Données
+
+Les données brutes proviennent de divers systèmes sources non liés, chacun avec ses propres règles et idiosyncrasies. Par conséquent, un certain remodelage des données est nécessaire pour obtenir un ensemble de tables qui, malgré leur grand nombre, reste pratique pour les Data Analysts et autres utilisateurs finaux en aval : toutes les tables sont remodelées en utilisant un paradigme de structuration unifié (définissant ce que chaque table représente et comment elle se rapporte aux autres) et leurs contenus sont alignés (unités, devises, identifiants d'entité, etc. sont unifiés). Ce processus de conception est appelé **modélisation des données**.
+
+C'est important car
+
+- (i) cela améliore grandement la lisibilité des données et facilite les interconnexions entre les systèmes sources et leurs tables, d'où provient une grande partie de la valeur,
+- (ii) cela permet au data warehouse de croître de manière saine, c'est-à-dire que davantage de systèmes sources et de tables peuvent être intégrés rapidement
+- (iii) il est conçu sur la base de discussions avec les Data Analysts, Data Scientists et autres utilisateurs finaux afin de leur permettre de répondre au plus grand nombre possible de leurs questions facilement, c'est-à-dire sans avoir besoin de revenir aux données brutes et, dans la mesure du possible, sans avoir besoin de compétences techniques approfondies en manipulation de données.
+
+#### Validation des Données
+
+Les données brutes contiennent des informations invalides qui doivent être détectées et filtrées avant d'atteindre les utilisateurs finaux. Celles-ci peuvent être causées par des erreurs humaines, par des bugs quelque part dans le système source ou dans le Pipeline de Données, ou par un comportement frauduleux délibéré effectué dans l'un des systèmes sources. Ces invalidités prennent la forme d'enregistrements dupliqués, de fautes de frappe ou de valeurs incorrectes, par exemple. Les Analytics Engineers mettent en place des transformations de données pour gérer automatiquement les problèmes connus et ils déploient des tests de validation de données afin de détecter autant de problèmes restants que possible.
+
+#### Transformations Analytiques
+
+En plus de remodeler et de nettoyer les données, il appartient également aux Analytics Engineers de réaliser un ensemble de transformations de données analytiques où des unités atomiques d'information (par exemple, l'utilisateur X a effectué l'action Y à la date Z) sont traitées en informations plus précieuses. Exemples :
+
+- Déterminer quel ensemble d'attributs était effectif pour chaque utilisateur à tout moment dans le passé en fonction des journaux de changement d'attributs atomiques ;
+- Identifier les sessions d'activité des utilisateurs dans l'application en fonction des journaux d'actions utilisateur atomiques ;
+- Plus largement, calculer un indicateur de performance clé donné utilisé par l'organisation.
+
+L'objectif ici est d'effectuer toute transformation analytique fréquente et importante (par exemple, le calcul de métriques) une fois de manière rigoureuse, afin que les utilisateurs en aval puissent simplement utiliser une source unique de vérité au lieu d'effectuer cette transformation de manière moins performante et fiable, et potentiellement à plusieurs endroits, ce qui introduit des réalités parallèles où une métrique donnée n'est pas mesurée de la même manière d'un utilisateur final à l'autre.
