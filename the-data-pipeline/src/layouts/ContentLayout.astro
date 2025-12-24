@@ -1,11 +1,11 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import MainLayout from './MainLayout.astro';
-import Navigation from '../components/Navigation.astro';
+import type { CollectionEntry } from "astro:content";
+import MainLayout from "./MainLayout.astro";
+import Navigation from "../components/Navigation.astro";
 
 interface Props {
-  entry: CollectionEntry<'pages'>;
-  lang: 'en' | 'fr';
+  entry: CollectionEntry<"pages">;
+  lang: "en" | "fr";
 }
 
 const { entry, lang } = Astro.props;
@@ -17,30 +17,38 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
 
 <MainLayout title={pageTitle} lang={lang}>
   <Navigation />
-  
+
   <main>
     <div class="container">
       <h1>{title}</h1>
       {subtitle && <h2 class="subtitle">{subtitle}</h2>}
-      
+
       <div class="content-wrapper">
         <Content />
       </div>
 
-      {(prevPage || nextPage) && (
-        <div class="nav-buttons">
-          {prevPage && (
-            <a href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith('/') ? '' : '/'}${lang === 'fr' ? 'fr/' : ''}${prevPage.url}`} class="prev-button">
-              ← Previous: {prevPage.title}
-            </a>
-          )}
-          {nextPage && (
-            <a href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith('/') ? '' : '/'}${lang === 'fr' ? 'fr/' : ''}${nextPage.url}`} class="next-button">
-              Next: {nextPage.title} →
-            </a>
-          )}
-        </div>
-      )}
+      {
+        (prevPage || nextPage) && (
+          <div class="nav-buttons">
+            {prevPage && (
+              <a
+                href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith("/") ? "" : "/"}${lang === "fr" ? "fr/" : ""}${prevPage.url}`}
+                class="prev-button"
+              >
+                ← Previous: {prevPage.title}
+              </a>
+            )}
+            {nextPage && (
+              <a
+                href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith("/") ? "" : "/"}${lang === "fr" ? "fr/" : ""}${nextPage.url}`}
+                class="next-button"
+              >
+                Next: {nextPage.title} →
+              </a>
+            )}
+          </div>
+        )
+      }
     </div>
   </main>
 </MainLayout>
@@ -100,6 +108,28 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
     color: var(--color-accent);
   }
 
+  .content-wrapper :global(.summary-box) {
+    background: var(--color-bg-secondary);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--color-accent);
+    margin-bottom: 2rem;
+  }
+
+  .content-wrapper :global(.summary-box h3) {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-wrapper :global(.summary-box p) {
+    margin-bottom: 0.5rem;
+  }
+
+  .content-wrapper :global(.summary-box p:last-child) {
+    margin-bottom: 0;
+  }
+
   .nav-buttons {
     display: flex;
     justify-content: space-between;
@@ -140,7 +170,7 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
     .nav-buttons {
       flex-direction: column;
     }
-    
+
     .next-button {
       margin-left: 0;
     }
