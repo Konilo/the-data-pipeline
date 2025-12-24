@@ -1,0 +1,123 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Navigation from '../components/Navigation.astro';
+import { content } from '../content/en';
+---
+
+<MainLayout title={content.intro.title} lang="en">
+  <Navigation />
+  
+  <main>
+    <div class="container">
+      <h1>{content.intro.title}</h1>
+      
+      <div class="content-section">
+        {content.intro.content.split('\n\n').map((paragraph: string) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+
+      <div class="schema-placeholder">
+        <p>{content.intro.schemaPlaceholder}</p>
+      </div>
+
+      <div class="content-section">
+        {content.intro.content2.split('\n\n').map((paragraph: string) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+
+      <h3>{content.intro.examplesTitle}</h3>
+      <ul>
+        {content.intro.examples.map((example: string) => (
+          <li>{example}</li>
+        ))}
+      </ul>
+
+      <div class="nav-buttons">
+        <a href={import.meta.env.BASE_URL} class="prev-button">← Previous: Home</a>
+        <a href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith('/') ? '' : '/'}data-pipeline`} class="next-button">Next: {content.pipeline.title} →</a>
+      </div>
+    </div>
+  </main>
+</MainLayout>
+
+<style>
+  main {
+    padding: 3rem 2rem;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-accent);
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-section {
+    margin-bottom: 2rem;
+  }
+
+  .schema-placeholder {
+    background: var(--color-bg-secondary);
+    border: 2px dashed rgba(59, 130, 246, 0.3);
+    border-radius: 0.5rem;
+    padding: 3rem;
+    margin: 2rem 0;
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-style: italic;
+  }
+
+  ul {
+    background: var(--color-bg-secondary);
+    padding: 1.5rem 1.5rem 1.5rem 3rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .prev-button,
+  .next-button {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-accent);
+    color: white;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .prev-button:hover {
+    background: var(--color-accent-hover);
+    transform: translateX(-5px);
+    text-decoration: none;
+  }
+
+  .next-button:hover {
+    background: var(--color-accent-hover);
+    transform: translateX(5px);
+    text-decoration: none;
+  }
+</style>
