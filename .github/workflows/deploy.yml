@@ -25,7 +25,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v5
         with:
-          path: ./the-tutorial # The root location the Astro project inside the repo
+          path: ./the-data-pipeline
           node-version: 22
 
   deploy:
