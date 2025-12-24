@@ -1,0 +1,14 @@
+---
+interface Props {
+  role: string;
+  tools: string;
+}
+
+const { role, tools } = Astro.props;
+---
+
+<div class="summary-box">
+  <h3>Summary</h3>
+  <p><strong>Role:</strong> {role}</p>
+  <p><strong>Main tool:</strong> {tools}</p>
+</div>
