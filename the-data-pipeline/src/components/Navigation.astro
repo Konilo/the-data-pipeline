@@ -1,0 +1,130 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+
+const currentPath = Astro.url.pathname;
+const normalizedPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base;
+const isHome = normalizedPath === normalizedBase || normalizedPath === `${normalizedBase}/fr`;
+---
+
+<nav>
+  <div class="nav-container">
+    <a href={`${base}${lang === 'fr' ? 'fr/' : ''}`} class="nav-brand">
+      Data Pipeline Guide
+    </a>
+    
+    <div class="nav-links">
+      <a href={lang === 'fr' ? `${base}fr/` : base} class:list={['nav-link', { active: isHome }]}>
+        {t('nav.home')}
+      </a>
+      <a href={lang === 'fr' ? `${base}fr/introduction` : `${base}introduction`} class:list={['nav-link', { active: currentPath.includes('introduction') }]}>
+        {t('nav.introduction')}
+      </a>
+      <a href={lang === 'fr' ? `${base}fr/data-pipeline` : `${base}data-pipeline`} class:list={['nav-link', { active: currentPath.endsWith('/data-pipeline') || currentPath.endsWith('/data-pipeline/') }]}>
+        {t('nav.pipeline')}
+      </a>
+      <a href={lang === 'fr' ? `${base}fr/data-engineers` : `${base}data-engineers`} class:list={['nav-link', { active: currentPath.includes('data-engineers') }]}>
+        {t('nav.engineers')}
+      </a>
+      <a href={lang === 'fr' ? `${base}fr/analytics-engineers` : `${base}analytics-engineers`} class:list={['nav-link', { active: currentPath.includes('analytics-engineers') }]}>
+        {t('nav.analytics')}
+      </a>
+      <a href={lang === 'fr' ? `${base}fr/data-analysts` : `${base}data-analysts`} class:list={['nav-link', { active: currentPath.includes('data-analysts') }]}>
+        {t('nav.analysts')}
+      </a>
+      <a href={lang === 'fr' ? `${base}fr/data-scientists` : `${base}data-scientists`} class:list={['nav-link', { active: currentPath.includes('data-scientists') }]}>
+        {t('nav.scientists')}
+      </a>
+    </div>
+
+    <div class="lang-switcher">
+      <a href={currentPath.includes('/fr/') ? currentPath.replace('/fr/', '/') : `${base}fr/${currentPath.replace(base, '')}`} class="lang-link">
+        {lang === 'en' ? '🇬🇧 EN' : '🇫🇷 FR'}
+      </a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    background: var(--color-bg-secondary);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .nav-brand:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .lang-switcher {
+    margin-left: auto;
+  }
+
+  .lang-link {
+    padding: 0.5rem 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+  }
+
+  .lang-link:hover {
+    background: rgba(59, 130, 246, 0.2);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      order: 3;
+      width: 100%;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>
