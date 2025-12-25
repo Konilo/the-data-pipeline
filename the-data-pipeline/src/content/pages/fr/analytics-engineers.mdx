@@ -44,7 +44,7 @@ Les données brutes contiennent des informations invalides qui doivent être dé
 En plus de remodeler et de nettoyer les données, il appartient également aux Analytics Engineers de réaliser un ensemble de transformations de données analytiques où des unités atomiques d'information (par exemple, l'utilisateur X a effectué l'action Y à la date Z) sont transformées en informations plus précieuses. Exemples :
 
 - Déterminer quel ensemble d'attributs était effectif pour chaque utilisateur à tout moment dans le passé en fonction des enriegistrements atomiques de changement d'attributs ;
-- Identifier les sessions d'activité des utilisateurs dans l'application en fonction des journaux d'actions utilisateur atomiques ;
+- Identifier les sessions d'activité des utilisateurs dans l'application en fonction des enregistrements atomiques de leurs actions ;
 - Plus largement, calculer un indicateur de performance clé donné utilisé par l'organisation.
 
 L'objectif ici est d'effectuer toute transformation analytique fréquente et importante (par exemple, le calcul de métriques) une fois de manière rigoureuse, afin que les utilisateurs en aval puissent simplement utiliser une source unique de vérité au lieu d'effectuer cette transformation de manière moins performante et fiable, et potentiellement à plusieurs endroits, ce qui introduit des réalités parallèles où une métrique donnée n'est pas mesurée de la même manière d'un utilisateur final à l'autre.
