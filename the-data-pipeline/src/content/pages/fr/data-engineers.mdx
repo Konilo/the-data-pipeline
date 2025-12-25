@@ -21,7 +21,7 @@ Les organisations souhaitent exploiter toutes les données pertinentes pour leur
 - Les logiciels utilisés par l'organisation, en interne, pour mener ses opérations tels qu'un système de gestion de la relation client (par exemple, Pipedrive), où les interactions entre une entreprise et ses clients sont enregistrées, ou une plateforme d'emailing (par exemple, Mailjet) qui envoie des e-mails et mesure leur efficacité
 - Des systèmes sources tiers fournissant des informations précieuses pour l'organisation telles que les prévisions météorologiques pour les organisations dont les opérations sont affectées par le climat (par exemple, l'agroalimentaire), ou les données financières pour les organisations affectées par les marchés financiers car elles achètent et/ou vendent des matières premières, par exemple.
 
-La collecte de données à partir des systèmes sources est le domaine des **Data Engineers**.
+La collecte de données à partir des systèmes sources est le domaine desData Engineers.
 
 Ils développent le logiciel nécessaire pour collecter ces données de manière opportune et fiable – c'est le premier « conduit » du Pipeline de Données.
 
@@ -30,10 +30,14 @@ Chaque système source diffère des autres dans une dimension ou une autre. Ces 
 - L'authentification nécessaire pour obtenir la confiance du système source et accéder aux données,
 - Le format des données,
 - La vitesse et la fréquence à laquelle les données peuvent être collectées,
-- La façon dont les données peuvent être lues, par exemple, est-il possible de lire uniquement certains enregistrements d'intérêt ou est-il seulement possible de télécharger un ensemble de données, qui peut être énorme, complètement ?
+- La façon dont les données peuvent être lues, par exemple, est-il possible de lire uniquement certains enregistrements d'intérêt ou est-il seulement possible de télécharger l'ensemble des données (qui peut être volumineux) complètement ?
 - Le fait que la structure des données peut changer au fil du temps alors que les opérateurs en aval du Pipeline de Données ont besoin de cohérence,
 - Etc.
 
 Les Data Engineers doivent naviguer dans tout cela.
 
-Ils chargent ensuite les données brutes et non traitées sous forme de tables dans une base de données centralisant toutes les données dont l'organisation souhaite extraire de la valeur. Plusieurs conceptions de bases de données centrales existent, chacune avec ses spécificités, mais une variante courante est le Data Warehouse. Il s'agit de la principale « installation de stockage » du Pipeline de Données. Les Data Engineers sont également responsables de la configuration (choix de la technologie de base de données et déploiement de l'infrastructure nécessaire) et des performances (vitesses de lecture et d'écriture) de cette base de données.
+Ils chargent ensuite les données brutes et non traitées sous forme de tables dans une base de données centralisant toutes les données dont l'organisation souhaite extraire de la valeur. Plusieurs conceptions de bases de données centrales existent, chacune avec ses spécificités, mais une variante courante est le **Data Warehouse**. Il s'agit de la principale « installation de stockage » du Pipeline de Données.
+
+### Infrastructure
+
+Les Data Engineers sont également responsables de la configuration et de la performance de l'infrstructure sur laquelle repose l'équipe Data: le Data Warehouse utilisé par tous les membres de l'équipe, and les outils de business intelligence utilisés par les Data Analysts pour créer des dashboards, par exemple.

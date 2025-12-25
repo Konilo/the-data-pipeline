@@ -14,6 +14,11 @@ export const ui = {
     'nav.analytics': 'Analytics Engineers',
     'nav.analysts': 'Data Analysts',
     'nav.scientists': 'Data Scientists',
+    'summary.title': 'Summary',
+    'summary.role': 'Role:',
+    'summary.tools': 'Main tool:',
+    'nav.previous': 'Previous:',
+    'nav.next': 'Next:',
   },
   fr: {
     'nav.home': 'Accueil',
@@ -23,6 +28,11 @@ export const ui = {
     'nav.analytics': 'Analytics Engineers',
     'nav.analysts': 'Data Analysts',
     'nav.scientists': 'Data Scientists',
+    'summary.title': 'Résumé',
+    'summary.role': 'Rôle :',
+    'summary.tools': 'Outil principal :',
+    'nav.previous': 'Précédent :',
+    'nav.next': 'Suivant :',
   },
 } as const;
 
