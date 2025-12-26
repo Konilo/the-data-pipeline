@@ -9,9 +9,25 @@ We produce numeric data whenever we use a numeric device either as a by-product 
 
 This information is collected to provide value, in some way or another, to ourselves, another individual, or an organization that will consume it. This resource is valuable because it allows us to make informed decisions.
 
-[TODO: Decision Making Cycle Schema]
+```mermaid
+---
+config:
+  layout: dagre
+  theme: dark
+---
+flowchart LR
+    A["People make decisions"] --> B["They take action"]
+    B --> C["Data gets generated, collected, and analyzed"]
+    C --> D["Information is delivered"]
+    D --> A
 
-Organizations (private companies, public institutions, or non-profit organizations), are major consumers of numeric information, especially technology-oriented organizations whose business is centered on numeric devices. The data they collect is essential for them to be able to make sensible decisions. Organizations are looking to draw as much value as possible from data: this requires collecting it and turning it into actionable insights for the organization and/or its customers to use. The growing (i) amount of data that gets collected and (ii) complexity of the processing required to turn it into user-friendly information is what gives rise to Data as a distinct professional field.
+    style A fill:#3b82f6,color:none
+    style B fill:#c40045,color:none
+    style C fill:#8b5cf6,color:none
+    style D fill:#038a0a,color:none
+```
+
+Organizations (private companies, public institutions, or non-profit organizations) are major consumers of numeric information, especially technology-oriented organizations. The data they collect is essential for them to be able to make sensible decisions. Organizations are looking to draw as much value as possible from data: this requires collecting it and turning it into actionable insights for the organization and/or its customers to use. The growing (i) amount of data that gets collected and (ii) complexity of the processing required to turn it into user-friendly information is what gives rise to Data as a distinct professional field.
 
 #### Some examples of questions a Data team can answer:
 

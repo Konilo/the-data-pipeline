@@ -9,7 +9,23 @@ Nous produisons des données numériques chaque fois que nous utilisons un appar
 
 Ces informations sont collectées pour apporter de la valeur, d'une manière ou d'une autre, à nous-mêmes, à un autre individu ou à une organisation qui les consommera. Cette ressource est précieuse car elle nous permet de prendre des décisions éclairées.
 
-[TODO : Schéma du Cycle de Décision]
+```mermaid
+---
+config:
+  layout: dagre
+  theme: dark
+---
+flowchart LR
+    A["Des décisions sont prises"] --> B["Des actions en découlent"]
+    B --> C["Des données sont générées, collectées et analysées"]
+    C --> D["De l'information est communiquée"]
+    D --> A
+
+    style A fill:#3b82f6,color:none
+    style B fill:#c40045,color:none
+    style C fill:#8b5cf6,color:none
+    style D fill:#038a0a,color:none
+```
 
 Les organisations (entreprises privées, institutions publiques ou organisations à but non lucratif) sont les principaux consommateurs d'informations numériques, en particulier les organisations technologiques dont l'activité est centrée sur les appareils numériques. Les données qu'elles collectent sont essentielles pour leur permettre de prendre des décisions sensées. Les organisations cherchent à tirer le maximum de valeur des données : cela nécessite de les collecter et de les transformer en informations exploitables pour l'organisation et/ou ses clients. La croissance (i) de la quantité de données collectées et (ii) de la complexité du traitement nécessaire pour les transformer en informations conviviales est ce qui fait naître la Data en tant que domaine professionnel distinct.
 
