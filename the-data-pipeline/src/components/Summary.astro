@@ -1,14 +1,18 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n";
+
 interface Props {
   role: string;
   tools: string;
 }
 
 const { role, tools } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="summary-box">
-  <h3>Summary</h3>
-  <p><strong>Role:</strong> {role}</p>
-  <p><strong>Main tool:</strong> {tools}</p>
+  <h3>{t("summary.title")}</h3>
+  <p><strong>{t("summary.role")}</strong> {role}</p>
+  <p><strong>{t("summary.tools")}</strong> {tools}</p>
 </div>

@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import MainLayout from "./MainLayout.astro";
 import Navigation from "../components/Navigation.astro";
+import { useTranslations } from "../i18n";
 
 interface Props {
   entry: CollectionEntry<"pages">;
@@ -13,6 +14,7 @@ const { Content } = await entry.render();
 const { title, subtitle, prevPage, nextPage } = entry.data;
 
 const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
+const t = useTranslations(lang);
 ---
 
 <MainLayout title={pageTitle} lang={lang}>
@@ -35,7 +37,7 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
                 href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith("/") ? "" : "/"}${lang === "fr" ? "fr/" : ""}${prevPage.url}`}
                 class="prev-button"
               >
-                ← Previous: {prevPage.title}
+                ← {t("nav.previous")} {prevPage.title}
               </a>
             )}
             {nextPage && (
@@ -43,7 +45,7 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
                 href={`${import.meta.env.BASE_URL}${import.meta.env.BASE_URL.endsWith("/") ? "" : "/"}${lang === "fr" ? "fr/" : ""}${nextPage.url}`}
                 class="next-button"
               >
-                Next: {nextPage.title} →
+                {t("nav.next")} {nextPage.title} →
               </a>
             )}
           </div>
@@ -80,13 +82,13 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
     font-size: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
+    color: var(--color-accent);
   }
 
   .content-wrapper :global(h4) {
     font-size: 1.3rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    color: var(--color-accent);
   }
 
   .content-wrapper :global(p) {
@@ -128,6 +130,12 @@ const pageTitle = subtitle ? `${title} - ${subtitle}` : title;
 
   .content-wrapper :global(.summary-box p:last-child) {
     margin-bottom: 0;
+  }
+
+  .content-wrapper :global(img[id^="mermaid-"]) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .nav-buttons {
