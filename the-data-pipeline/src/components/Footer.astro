@@ -1,0 +1,72 @@
+---
+---
+
+<footer>
+  <div class="footer-content">
+    <p class="name">Konilo Zio</p>
+    <div class="links">
+      <a href="https://github.com/Konilo/the-data-pipeline" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
+      <span class="separator">•</span>
+      <a href="https://www.linkedin.com/in/konilo-zio/" target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background: var(--color-bg-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    margin-top: auto;
+  }
+
+  .footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .links a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .separator {
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      padding: 1.5rem 1rem;
+    }
+
+    .name {
+      font-size: 1rem;
+    }
+  }
+</style>
