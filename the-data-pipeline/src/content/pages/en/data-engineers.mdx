@@ -1,8 +1,8 @@
 ---
 title: "The Source of the Data Flow"
 subtitle: "Data Engineers"
-summaryRole: "Collect raw data that is useful for insights generation (after downstream processing) from a diversity of sources; setup the technical infrastructure used by the Data team"
-summaryTools: "Scripting programming languages such as Python used to build the data ingestion pipelines"
+summaryRole: "Collect raw data that is useful for insights generation from a diversity of sources, and setup the technical infrastructure used by the Data team"
+summaryTools: "Scripting programming languages such as Python"
 prevPage:
   title: "Discovering the Data Pipeline"
   url: "data-pipeline"
@@ -19,29 +19,23 @@ export const { summaryRole, summaryTools } = frontmatter;
 
 Organizations wish to leverage any data relevant to their activities. Therefore, the flow of data Data Professionals deal with originates from various sources. Depending on the organization, the source systems can be:
 
-- The software the organization owns, develops, and distributes to clients whose actions on the software may be tracked (e.g. YouTube for Google);
+- The software the organization owns, develops, and distributes to clients whose actions on the software may be tracked (e.g., YouTube for Google);
 - Software used by the organization, internally, to conduct its operations such as a customer relationship management system (e.g., Pipedrive), where the interactions between a company and its customers are logged, or an emailing platform (e.g., Mailjet) which sends emails and measures their effectiveness
-- Third-party sources systems providing information which is valuable to the organization such as weather forecasts for organizations whose operations are affected by the climate (e.g., agri-food), or financial data for organizations which are affected by financial markets because they buy and/or sell commodities, for instance.
+- Third-party source systems providing information which is valuable to the organization such as weather forecasts for organizations whose operations are affected by the climate (e.g., agri-food), or financial data for organizations which are affected by financial markets because they buy and/or sell commodities, for instance.
 
-The collection of data from source systems is the realm of Data Engineers.
+The collection of data from source systems is the realm of Data Engineers. They develop the software necessary to collect this data in a timely and reliable manner – this is the first "conduit" of the Data Pipeline. Each source system differs from the others in a dimension or another. Those dimensions Data Engineers have to navigate are:
 
-They develop the software necessary to collect this data in a timely and reliable manner – this is the first "conduit" of the Data Pipeline.
-
-Each source system differs from the others in a dimension or another. Those dimensions are:
-
-- The authentication necessary to get the source system's trust and gain access to the data,
+- The authentication necessary to get the source system's trust and gain access to its data,
 - The format of the data,
-- The speed and frequency with which the data can be collected,
+- The speed and frequency with which it can be collected,
 - The way the data can be read e.g., is it possible to read only some records of interest or is it only possible to download a dataset, which may be huge, completely?
 - The fact that the data's structure can change over time whereas downstream operators of the Data Pipeline need consistency,
 - Etc.
 
-Data Engineers need to navigate this.
-
-They then load the raw, unprocessed data as tables into a database centralizing all the data the organization wants to extract value from. Several designs of central databases exist with each their specificities but a common variant is the **Data Warehouse**. This is the main "storage facility" of the Data Pipeline.
+They then load the raw data as tables into a database centralizing all the data the organization wants to extract value from. Several designs of central databases exist with each their specificities but a common variant is the [**Data Warehouse**](https://en.wikipedia.org/wiki/Data_warehouse). This is the main "storage facility" of the Data Pipeline.
 
 ### Infrastructure
 
-Data Engineers are also responsible for the setup and maintenance of the infrastructure the Data team relies upon: the data wharehouse used by all team mebmbers, and business intelligence tools used by Data Analysts to make dashboards, for instance.
+Data Engineers are also responsible for the setup and maintenance of the infrastructure the Data team relies upon: the data wharehouse used by all team mebmbers, and [business intelligence](https://en.wikipedia.org/wiki/Business_intelligence) tools used by Data Analysts to make dashboards, for instance.
 
 They are also the ones in charge of deploying the prediction models developed by Data Scientists (who will be introduced in the last section).
