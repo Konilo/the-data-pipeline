@@ -1,4 +1,6 @@
 ---
+import Footer from "../components/Footer.astro";
+
 interface Props {
   title: string;
   lang?: string;
@@ -19,6 +21,7 @@ const base = import.meta.env.BASE_URL;
   </head>
   <body>
     <slot />
+    <Footer />
   </body>
 </html>
 
