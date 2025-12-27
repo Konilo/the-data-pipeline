@@ -1,8 +1,8 @@
 ---
 title: "Transformer le Bronze en Or"
 subtitle: "Analytics Engineers"
-summaryRole: "Nettoyer, organiser et documenter les données et calculer les indicateurs clés (spécifiques aux besoins en aval) afin que les Data Analysts, Data Scientists et autres utilisateurs finaux puissent les analyser efficacement"
-summaryTools: "Un langage de programmation de manipulation de données tel que SQL"
+summaryRole: "Nettoyer, organiser et documenter les données et calculer les indicateurs clé de performance (spécifiques aux besoins en aval) afin que les Data Analysts, Data Scientists et autres utilisateurs finaux puissent les analyser efficacement"
+summaryTools: "Un langage de programmation fait pour la manipulation de données tel que SQL"
 prevPage:
   title: "Data Engineers"
   url: "data-engineers"
@@ -17,9 +17,9 @@ export const { summaryRole, summaryTools } = frontmatter;
 
 ### Transformation de données
 
-En l'état, les données brutes ne sont pas prêtes à produire des informations exploitables. Les Analytics Engineers sont responsables de les transformer en jeux de données nettoyés, remodelés et documentés, prêts à être utilisés par les Data Analysts, Data Scientists et autres utilisateurs finaux en aval.
+Les données brutes collectées par les Data Engineers ne sont pas prêtes à produire des informations exploitables. Les Analytics Engineers sont responsables de les transformer en jeux de données nettoyés, remodelés et documentés, prêts à être utilisés par les Data Analysts, Data Scientists et autres utilisateurs finaux en aval.
 
-Les tables stockées dans un Data Warehouse sont souvent regroupées en couches successives. La première est appelée bronze et contient les données brutes fournies par les Data Engineers.
+Les tables stockées dans un Data Warehouse sont souvent regroupées en [couches successives](https://www.databricks.com/fr/glossary/medallion-architecture). La première est appelée bronze et contient les données brutes fournies par les Data Engineers.
 
 Les données sont ensuite traitées entre chaque couche afin d'atteindre progressivement l'état où elles sont prêtes à l'emploi : c'est un processus de raffinement progressif où les tables de la couche bronze sont transformées en tables des couches argent qui, à leur tour, sont encore traitées pour produire les tables de la couche or, le produit final du data warehouse.
 
@@ -27,17 +27,17 @@ Ce processus est appelé transformation de données. Il se compose de plusieurs 
 
 #### Modélisation des Données
 
-Les données brutes proviennent de divers systèmes sources non liés, chacun avec ses propres règles et idiosyncrasies. Par conséquent, un certain remodelage des données est nécessaire pour obtenir un ensemble de tables qui, malgré leur grand nombre, reste pratique pour les Data Analysts et autres utilisateurs finaux en aval : toutes les tables sont remodelées en utilisant un paradigme de structuration unifié (définissant ce que chaque table représente et comment elle se rapporte aux autres) et leurs contenus sont alignés (unités, devises, identifiants d'entité, etc. sont unifiés). Ce processus de conception est appelé modélisation des données.
+Les données brutes proviennent de divers systèmes sources non liés, chacun avec ses propres règles et idiosyncrasies. Par conséquent, un certain remodelage des données est nécessaire pour obtenir un ensemble de tables qui, malgré leur grand nombre et leur diversité, reste pratique pour les Data Analysts et autres utilisateurs finaux en aval : toutes les tables sont remodelées en utilisant un paradigme de structuration unifié (définissant ce que chaque table représente et comment elle se rapporte aux autres) et leurs contenus sont alignés (unités, devises, identifiants d'entité, etc. sont unifiés). Ce processus de conception est appelé [modélisation des données](https://fr.wikipedia.org/wiki/Mod%C3%A9lisation_des_donn%C3%A9es).
 
 C'est important car :
 
-- ça améliore grandement la lisibilité des données et facilite les interconnexions entre les systèmes sources et leurs tables, d'où provient une grande partie de la valeur,
+- ça améliore grandement la lisibilité des données et facilite les interconnexions entre les systèmes sources, d'où provient une grande partie de la valeur,
 - ça permet au data warehouse de croître de manière saine, c'est-à-dire que davantage de systèmes sources et de tables peuvent être intégrés rapidement
 - il est conçu sur la base de discussions avec les Data Analysts, Data Scientists et autres utilisateurs finaux afin de leur permettre de répondre au plus de questions possibles facilement, c'est-à-dire sans avoir besoin de revenir aux données brutes et, dans la mesure du possible, sans avoir besoin de compétences techniques approfondies en manipulation de données.
 
 #### Validation des Données
 
-Les données brutes contiennent des informations invalides qui doivent être détectées et traitées avant d'atteindre les utilisateurs finaux. Celles-ci peuvent être causées par des erreurs humaines, par des bugs quelque part dans le système source ou dans le Pipeline de Données, ou par un comportement frauduleux délibéré effectué dans l'un des systèmes sources. Ces invalidités prennent la forme d'enregistrements dupliqués, de fautes de frappe ou de valeurs incorrectes, par exemple. Les Analytics Engineers mettent en place des transformations de données pour gérer automatiquement les problèmes connus et ils déploient des tests de validation de données afin de détecter autant de problèmes restants que possible.
+Les données brutes contiennent des informations invalides qui doivent être détectées et traitées avant d'atteindre les utilisateurs finaux. Celles-ci peuvent être causées par des erreurs humaines, par des bugs quelque part dans un système source ou dans le Pipeline de Données, ou par un comportement frauduleux délibéré effectué dans l'un des systèmes sources. Ces invalidités prennent la forme d'enregistrements dupliqués, de fautes de frappe ou de valeurs incorrectes, par exemple. Les Analytics Engineers mettent en place des transformations de données pour gérer automatiquement les problèmes connus et ils déploient des tests de validation de données afin de détecter autant de problèmes restants que possible.
 
 #### Transformations Analytiques
 
@@ -45,7 +45,7 @@ En plus de remodeler et de nettoyer les données, il appartient également aux A
 
 - Déterminer quel ensemble d'attributs était effectif pour chaque utilisateur à tout moment dans le passé en fonction des enriegistrements atomiques de changement d'attributs ;
 - Identifier les sessions d'activité des utilisateurs dans l'application en fonction des enregistrements atomiques de leurs actions ;
-- Plus largement, calculer un indicateur de performance clé donné utilisé par l'organisation.
+- Plus largement, calculer un [indicateur clé de performance](https://fr.wikipedia.org/wiki/Indicateur_cl%C3%A9_de_performance) utilisé par l'organisation.
 
 L'objectif ici est d'effectuer toute transformation analytique fréquente et importante (par exemple, le calcul de métriques) une fois de manière rigoureuse, afin que les utilisateurs en aval puissent simplement utiliser une source unique de vérité au lieu d'effectuer cette transformation de manière moins performante et fiable, et potentiellement à plusieurs endroits, ce qui introduit des réalités parallèles où une métrique donnée n'est pas mesurée de la même manière d'un utilisateur final à l'autre.
 
