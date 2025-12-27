@@ -1,50 +1,120 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n';
+import { getLangFromUrl, useTranslations } from "../i18n";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : import.meta.env.BASE_URL + "/";
 
 const currentPath = Astro.url.pathname;
-const normalizedPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
-const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base;
-const isHome = normalizedPath === normalizedBase || normalizedPath === `${normalizedBase}/fr`;
+const normalizedPath = currentPath.endsWith("/")
+  ? currentPath.slice(0, -1)
+  : currentPath;
+const normalizedBase = base.endsWith("/") ? base.slice(0, -1) : base;
+const isHome =
+  normalizedPath === normalizedBase ||
+  normalizedPath === `${normalizedBase}/fr`;
 ---
 
 <nav>
   <div class="nav-container">
-    <a href={`${base}${lang === 'fr' ? 'fr/' : ''}`} class="nav-brand">
+    <a href={`${base}${lang === "fr" ? "fr/" : ""}`} class="nav-brand">
       The Data Pipeline
     </a>
-    
-    <div class="nav-links">
-      <a href={lang === 'fr' ? `${base}fr/` : base} class:list={['nav-link', { active: isHome }]}>
-        {t('nav.home')}
-      </a>
-      <a href={lang === 'fr' ? `${base}fr/introduction` : `${base}introduction`} class:list={['nav-link', { active: currentPath.includes('introduction') }]}>
-        {t('nav.introduction')}
-      </a>
-      <a href={lang === 'fr' ? `${base}fr/data-pipeline` : `${base}data-pipeline`} class:list={['nav-link', { active: currentPath.endsWith('/data-pipeline') || currentPath.endsWith('/data-pipeline/') }]}>
-        {t('nav.pipeline')}
-      </a>
-      <a href={lang === 'fr' ? `${base}fr/data-engineers` : `${base}data-engineers`} class:list={['nav-link', { active: currentPath.includes('data-engineers') }]}>
-        {t('nav.engineers')}
-      </a>
-      <a href={lang === 'fr' ? `${base}fr/analytics-engineers` : `${base}analytics-engineers`} class:list={['nav-link', { active: currentPath.includes('analytics-engineers') }]}>
-        {t('nav.analytics')}
-      </a>
-      <a href={lang === 'fr' ? `${base}fr/data-analysts` : `${base}data-analysts`} class:list={['nav-link', { active: currentPath.includes('data-analysts') }]}>
-        {t('nav.analysts')}
-      </a>
-      <a href={lang === 'fr' ? `${base}fr/data-scientists` : `${base}data-scientists`} class:list={['nav-link', { active: currentPath.includes('data-scientists') }]}>
-        {t('nav.scientists')}
-      </a>
-    </div>
 
-    <div class="lang-switcher">
-      <a href={currentPath.includes('/fr/') ? currentPath.replace('/fr/', '/') : `${base}fr/${currentPath.replace(base, '')}`} class="lang-link">
-        {lang === 'en' ? '🇬🇧 EN' : '🇫🇷 FR'}
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+      <a
+        href={lang === "fr" ? `${base}fr/` : base}
+        class:list={["nav-link", { active: isHome }]}
+      >
+        {t("nav.home")}
       </a>
+      <a
+        href={lang === "fr" ? `${base}fr/introduction` : `${base}introduction`}
+        class:list={[
+          "nav-link",
+          { active: currentPath.includes("introduction") },
+        ]}
+      >
+        {t("nav.introduction")}
+      </a>
+      <a
+        href={lang === "fr"
+          ? `${base}fr/data-pipeline`
+          : `${base}data-pipeline`}
+        class:list={[
+          "nav-link",
+          {
+            active:
+              currentPath.endsWith("/data-pipeline") ||
+              currentPath.endsWith("/data-pipeline/"),
+          },
+        ]}
+      >
+        {t("nav.pipeline")}
+      </a>
+      <a
+        href={lang === "fr"
+          ? `${base}fr/data-engineers`
+          : `${base}data-engineers`}
+        class:list={[
+          "nav-link",
+          { active: currentPath.includes("data-engineers") },
+        ]}
+      >
+        {t("nav.engineers")}
+      </a>
+      <a
+        href={lang === "fr"
+          ? `${base}fr/analytics-engineers`
+          : `${base}analytics-engineers`}
+        class:list={[
+          "nav-link",
+          { active: currentPath.includes("analytics-engineers") },
+        ]}
+      >
+        {t("nav.analytics")}
+      </a>
+      <a
+        href={lang === "fr"
+          ? `${base}fr/data-analysts`
+          : `${base}data-analysts`}
+        class:list={[
+          "nav-link",
+          { active: currentPath.includes("data-analysts") },
+        ]}
+      >
+        {t("nav.analysts")}
+      </a>
+      <a
+        href={lang === "fr"
+          ? `${base}fr/data-scientists`
+          : `${base}data-scientists`}
+        class:list={[
+          "nav-link",
+          { active: currentPath.includes("data-scientists") },
+        ]}
+      >
+        {t("nav.scientists")}
+      </a>
+
+      <div class="lang-switcher">
+        <a
+          href={currentPath.includes("/fr/")
+            ? currentPath.replace("/fr/", "/")
+            : `${base}fr/${currentPath.replace(base, "")}`}
+          class="lang-link"
+        >
+          {lang === "en" ? "🇬🇧 EN" : "🇫🇷 FR"}
+        </a>
+      </div>
     </div>
   </div>
 </nav>
@@ -86,6 +156,7 @@ const isHome = normalizedPath === normalizedBase || normalizedPath === `${normal
     gap: 1.5rem;
     flex: 1;
     flex-wrap: wrap;
+    align-items: center;
   }
 
   .nav-link {
@@ -112,6 +183,7 @@ const isHome = normalizedPath === normalizedBase || normalizedPath === `${normal
     border-radius: 0.5rem;
     font-size: 0.9rem;
     transition: background 0.2s;
+    display: inline-block;
   }
 
   .lang-link:hover {
@@ -119,12 +191,110 @@ const isHome = normalizedPath === normalizedBase || normalizedPath === `${normal
     text-decoration: none;
   }
 
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
   @media (max-width: 768px) {
+    .hamburger {
+      display: flex;
+      margin-left: auto;
+    }
+
     .nav-links {
-      order: 3;
-      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-bg-secondary);
       flex-direction: column;
-      gap: 0.5rem;
+      padding: 5rem 2rem 2rem;
+      gap: 1rem;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.open {
+      transform: translateY(0);
+    }
+
+    .nav-link {
+      font-size: 1.1rem;
+      padding: 0.5rem 0;
+    }
+
+    .lang-switcher {
+      margin-left: 0;
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
   }
 </style>
+
+<script>
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  hamburger?.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks?.classList.toggle("open");
+
+    const isOpen = hamburger.classList.contains("active");
+    hamburger.setAttribute("aria-expanded", isOpen.toString());
+
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  });
+
+  // Close menu when clicking a link
+  const links = document.querySelectorAll(".nav-link");
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger?.classList.remove("active");
+      navLinks?.classList.remove("open");
+      hamburger?.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    });
+  });
+
+  // Close menu on escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && hamburger?.classList.contains("active")) {
+      hamburger.classList.remove("active");
+      navLinks?.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+  });
+</script>
