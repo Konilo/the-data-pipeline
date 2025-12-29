@@ -15,6 +15,22 @@ const normalizedBase = base.endsWith("/") ? base.slice(0, -1) : base;
 const isHome =
   normalizedPath === normalizedBase ||
   normalizedPath === `${normalizedBase}/fr`;
+
+// Language switching
+const getLanguageSwitchUrl = () => {
+  if (currentPath.includes("/fr/")) {
+    // FR → EN: Remove /fr/ from path
+    return currentPath.replace("/fr/", "/");
+  } else {
+    // EN → FR: Get relative path after base and prepend fr/
+    const pathAfterBase =
+      normalizedPath === normalizedBase
+        ? ""
+        : normalizedPath.slice(normalizedBase.length + 1);
+    return `${base}fr/${pathAfterBase}`;
+  }
+};
+const langSwitchUrl = getLanguageSwitchUrl();
 ---
 
 <nav>
@@ -106,12 +122,7 @@ const isHome =
       </a>
 
       <div class="lang-switcher">
-        <a
-          href={currentPath.includes("/fr/")
-            ? currentPath.replace("/fr/", "/")
-            : `${base}fr/${normalizedPath.replace(normalizedBase, "")}`}
-          class="lang-link"
-        >
+        <a href={langSwitchUrl} class="lang-link">
           {lang === "en" ? "🇬🇧 EN" : "🇫🇷 FR"}
         </a>
       </div>
