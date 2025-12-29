@@ -20,9 +20,11 @@ code the-data-pipeline
 
 Press F1 and search "Dev Containers: Reopen in Container"
 
-* Launch the development website preview.
+* Launch the development website preview. Note that using WSL greatly slows down previews (and builds), cf. `usePolling` in `astro.config.mjs`.
 
 ```sh
+cd /workspaces/the-data-pipeline/the-data-pipeline
+npm install
 npm run dev
 ```
 

@@ -4,6 +4,7 @@
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
+	"postCreateCommand": "cd /workspaces/the-data-pipeline/the-data-pipeline && npm install",
 	"remoteUser": "node",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {},

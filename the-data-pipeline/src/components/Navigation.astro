@@ -109,7 +109,7 @@ const isHome =
         <a
           href={currentPath.includes("/fr/")
             ? currentPath.replace("/fr/", "/")
-            : `${base}fr/${currentPath.replace(base, "")}`}
+            : `${base}fr/${normalizedPath.replace(normalizedBase, "")}`}
           class="lang-link"
         >
           {lang === "en" ? "🇬🇧 EN" : "🇫🇷 FR"}

@@ -8,6 +8,7 @@ export default defineConfig({
   integrations: [mdx()],
   vite: {
     server: {
+      // https://vite.dev/config/server-options#server-watch
       watch: {
         usePolling: true,
       },
