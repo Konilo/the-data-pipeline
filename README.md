@@ -24,7 +24,6 @@ Press F1 and search "Dev Containers: Reopen in Container"
 
 ```sh
 cd /workspaces/the-data-pipeline/the-data-pipeline
-npm install
 npm run dev
 ```
 
