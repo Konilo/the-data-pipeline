@@ -5,7 +5,7 @@
 		"dockerfile": "Dockerfile"
 	},
 	// https://dteather.com/blogs/astro-uml-diagrams/
-	"postCreateCommand": "cd /workspaces/the-data-pipeline/the-data-pipeline && npm install && npx playwright-core install --with-deps chromium",
+	"postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
 	"remoteUser": "node",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {},
