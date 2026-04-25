@@ -19,7 +19,7 @@ export const { summaryRole, summaryTools } = frontmatter;
 
 Raw data collected by Data Engineers is not ready to yield actionable insights. Analytics Engineers are responsible for turning it into cleaned, remodeled, documented data sets ready to be used by Data Analysts, Data Scientists, and other downstream end users.
 
-The tables stored in a Data Warehouse are often grouped into [successive layers](https://www.databricks.com/glossary/medallion-architecture). The first is called bronze and holds the raw data provided by Data Engineers. The data is then processed between each layer in order to progressively reach the state where it is ready for use: it is a progressive refinement process where tables in the bronze layer are transformed into tables of the silver layers which, in turn, are further processed to yield the tables of the gold layer, the final product of the data warehouse.
+The tables stored in a Data Warehouse are often grouped into [successive layers](https://www.databricks.com/glossary/medallion-architecture). The first is called bronze and holds the raw data provided by Data Engineers. The data is then processed between each layer in order to progressively reach the state where it is ready for use: it is a progressive refinement process where tables in the bronze layer are transformed into tables of the silver layers which, in turn, are further processed to yield the tables of the gold layer, the final product of the Data Warehouse.
 
 This process is called data transformation. It consists of several operations: data modeling, data validation, and analytical transformations.
 
@@ -30,7 +30,7 @@ Raw data comes from various independent source systems each with its own rules a
 It is important because:
 
 - it greatly improves the legibility of the data and facilitates the interconnections between source systems — interconnections from which much of the value of subsequent analyses originates;
-- it allows the data warehouse to grow in a healthy manner, i.e., more source systems and tables can be integrated into it rapidly;
+- it allows the Data Warehouse to grow in a healthy manner, i.e., more source systems and tables can be integrated into it rapidly;
 - it is designed based on discussions with Data Analysts, Data Scientists, and the rest of the organization so that it answers their questions as easily as possible, that is without the need to go back to the raw data (which lacks legibility and is hard to analyze) and, as much as possible, without the need for deep technical data manipulation skills.
 
 #### Data Validation

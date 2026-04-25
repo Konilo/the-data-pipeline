@@ -19,7 +19,7 @@ export const { summaryRole, summaryTools } = frontmatter;
 
 Les données brutes collectées par les Data Engineers ne sont pas prêtes à être analysées. Les Analytics Engineers sont responsables de les transformer en jeux de données nettoyés, remodelés et documentés, prêts à être utilisés par les Data Analysts, Data Scientists et autres utilisateurs finaux en aval.
 
-Les tables stockées dans un Data Warehouse sont souvent regroupées en [couches successives](https://www.databricks.com/fr/glossary/medallion-architecture). La première est appelée bronze et contient les données brutes fournies par les Data Engineers. Les données sont ensuite traitées entre chaque couche afin d'atteindre progressivement l'état où elles sont prêtes à l'emploi : c'est un processus de raffinement progressif où les tables de la couche bronze sont transformées en tables des couches argent qui, à leur tour, sont encore traitées pour produire les tables de la couche or, le produit final du data warehouse.
+Les tables stockées dans un Data Warehouse sont souvent regroupées en [couches successives](https://www.databricks.com/fr/glossary/medallion-architecture). La première est appelée bronze et contient les données brutes fournies par les Data Engineers. Les données sont ensuite traitées entre chaque couche afin d'atteindre progressivement l'état où elles sont prêtes à l'emploi : c'est un processus de raffinement progressif où les tables de la couche bronze sont transformées en tables des couches argent qui, à leur tour, sont encore traitées pour produire les tables de la couche or, le produit final du Data Warehouse.
 
 Ce processus est appelé transformation de données. Il se compose de plusieurs opérations : la modélisation de la donnée, la validation de la donnée et la transformation analytique.
 
@@ -30,7 +30,7 @@ Les données brutes proviennent de divers systèmes sources indépendants, chacu
 Il est important car :
 
 - il améliore grandement la lisibilité des données et facilite les liens entre les systèmes sources, liens d'où provient une grande partie de la valeur des analyses subséquentes.
-- il permet au data warehouse de croître de manière saine, c'est-à-dire que davantage de systèmes sources et de tables peuvent y être intégrés rapidement.
+- il permet au Data Warehouse de croître de manière saine, c'est-à-dire que davantage de systèmes sources et de tables peuvent y être intégrés rapidement.
 - il est conçu sur la base de discussions avec les Data Analysts, Data Scientists et avec l'ensemble de l'organisation de façon à ce qu'il réponde le plus facilement possible à leurs questions, c'est-à-dire sans avoir besoin de revenir aux données brutes (manquant de lisibilité et difficile à analyser) et, dans la mesure du possible, sans avoir besoin de compétences techniques approfondies en manipulation de données.
 
 #### Validation des Données
