@@ -1,7 +1,7 @@
 ---
 title: "Turning Bronze into Gold"
 subtitle: "Analytics Engineers"
-summaryRole: "Clean, organize, and document the data and compute key metrics (specific to the downstream needs) so that Data Analysts, Data Scientists, and other end users can analyze it efficiently"
+summaryRole: "Clean, organize, and document the data and compute the performance indicators specific to the organization so that Data Analysts, Data Scientists, and other end users can analyze it efficiently"
 summaryTools: "A data manipulation programming language such as SQL"
 prevPage:
   title: "Data Engineers"
@@ -19,21 +19,19 @@ export const { summaryRole, summaryTools } = frontmatter;
 
 Raw data collected by Data Engineers is not ready to yield actionable insights. Analytics Engineers are responsible for turning it into cleaned, remodeled, documented data sets ready to be used by Data Analysts, Data Scientists, and other downstream end users.
 
-The tables stored in a Data Warehouse are often grouped into [successive layers](https://www.databricks.com/glossary/medallion-architecture). The first is called bronze and holds the raw data provided by Data Engineers.
-
-The data is then processed between each layer in order to progressively reach the state where it is ready for use: it is a progressive refinement process where tables in the bronze layer are transformed into tables of the silver layers which, in turn, are further processed to yield the tables of the gold layer, the final product of the data warehouse.
+The tables stored in a Data Warehouse are often grouped into [successive layers](https://www.databricks.com/glossary/medallion-architecture). The first is called bronze and holds the raw data provided by Data Engineers. The data is then processed between each layer in order to progressively reach the state where it is ready for use: it is a progressive refinement process where tables in the bronze layer are transformed into tables of the silver layers which, in turn, are further processed to yield the tables of the gold layer, the final product of the data warehouse.
 
 This process is called data transformation. It consists of several operations: data modeling, data validation, and analytical transformations.
 
 #### Data Modeling
 
-Raw data comes from various unrelated source systems each with its own rules and idiosyncrasies. Hence, some reshaping of the data is necessary to obtain a set of tables that, despite their sheer number and diversity, remains practical for Data Analysts and other end users downstream to work with: all tables are remodeled using a single paradigm (defining what each table represents and how it relates to others) and their contents are aligned (units, currencies, entity identifiers, etc. are unified). This design process is called [data modeling](https://en.wikipedia.org/wiki/Data_modeling).
+Raw data comes from various independent source systems each with its own rules and idiosyncrasies. Hence, some reshaping of the data is necessary to obtain a set of tables that, despite their sheer number and diversity, remains usable for Data Analysts and other end users downstream: all tables are remodeled using a single paradigm (defining what each table represents and how it relates to the others) and their contents are aligned (units, currencies, entity identifiers, etc. are unified). This design process is called [data modeling](https://en.wikipedia.org/wiki/Data_modeling).
 
 It is important because:
 
-- it greatly improves the legibility of the data and facilitates the interconnections between the source systems, from which much value comes from,
-- it allows the data warehouse to grow in a healthy manner e.g., more source systems and tables can be integrated rapidly
-- it is designed based on discussions with Data Analysts, Data Scientists, and other end users in order to allow them to answer as many of their questions as possible easily, that is without the need to go back to the raw data and, as much as possible, without the need for deep technical data manipulation skills.
+- it greatly improves the legibility of the data and facilitates the interconnections between source systems — interconnections from which much of the value of subsequent analyses originates;
+- it allows the data warehouse to grow in a healthy manner, i.e., more source systems and tables can be integrated into it rapidly;
+- it is designed based on discussions with Data Analysts, Data Scientists, and the rest of the organization so that it answers their questions as easily as possible, that is without the need to go back to the raw data (which lacks legibility and is hard to analyze) and, as much as possible, without the need for deep technical data manipulation skills.
 
 #### Data Validation
 
@@ -43,11 +41,11 @@ Raw data contains invalid information which needs to be detected and treated bef
 
 On top of remodeling and cleaning the data, it is also the role of Analytics Engineers to carry out a set of analytical data transformations where atomic units of information (e.g., user X carried out action Y on date Z) is processed into more valuable information. Examples:
 
-- Determining what set of attributes were effective for each user at any point in the past based on atomic attribute change logs;
-- Identifying in-app user activity sessions based on atomic user action logs;
+- Determining what set of attributes were effective for each user of an application at any point in the past, based on atomic attribute change logs;
+- Identifying activity sessions of users of an application based on atomic user action logs;
 - More broadly, computing a given [key performance indicator](https://en.wikipedia.org/wiki/Performance_indicator) used by the organization.
 
-The goal here is to carry out any frequent, important analytical transformation (e.g., metric computation) once in a rigorous way, so that downstream users can simply use a single source of truth instead of carrying out that transformation in a less performant and reliable manner, and potentially in multiple places which introduces parallel realities where a given metric is not measured in the same way from an end user to the next.
+The goal here is to carry out any frequent, important analytical transformation (e.g., metric computation) once, in a rigorous way, so that downstream users can simply use a single source of truth instead of carrying out that transformation in a less performant manner and, potentially, in multiple places, which makes possible the existence of parallel realities in which a given metric is not defined in the same way.
 
 ### Training & Documentation
 
