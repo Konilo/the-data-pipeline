@@ -19,16 +19,28 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./the-data-pipeline
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v5
-      - name: Install playwright for mermaid
-        run: npx playwright install --with-deps chromium
-      - name: Install, build, and upload your site
-        uses: withastro/action@v5
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          path: ./the-data-pipeline
           node-version: 22
+          cache: npm
+          cache-dependency-path: ./the-data-pipeline/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Chromium for mermaid
+        run: npx playwright install --with-deps chromium
+      - name: Build Astro site
+        run: npx astro build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./the-data-pipeline/dist
 
   deploy:
     needs: build
