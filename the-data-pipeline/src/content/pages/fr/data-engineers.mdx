@@ -1,7 +1,7 @@
 ---
 title: "La Source du Flux de Données"
 subtitle: "Data Engineers"
-summaryRole: "Collecter les données brutes utiles pour la génération d'informations à partir de sources variées ; mettre en place l'infrastructure technique utilisée par l'équipe Data"
+summaryRole: "Collecter, à partir de sources variées, les données brutes dont l'analyse sera utile à l'organisation pour sa prise de décision ; mettre en place l'infrastructure technique utilisée par l'équipe Data"
 summaryTools: "Langages de programmation tels que Python"
 prevPage:
   title: "Découvrir le Pipeline de Données"
@@ -15,25 +15,27 @@ export const { summaryRole, summaryTools } = frontmatter;
 
 <Summary role={summaryRole} tools={summaryTools} />
 
-Les organisations souhaitent exploiter un maximum de données pertinentes pour leurs activités. Par conséquent, le flux de données avec lequel les rofessionnels de la Data travaillent provient de diverses sources. Selon l'organisation, les systèmes sources peuvent être :
+Les organisations souhaitent exploiter un maximum de données pertinentes pour leurs activités et leurs prises de décisions. Par conséquent, le flux de données avec lequel les professionnels de la Data travaillent provient de diverses sources. Selon l'organisation, les systèmes sources peuvent être :
 
-- Le logiciel que l'organisation possède, développe et distribue à ses clients dont les actions sur le logiciel peuvent être suivies (par exemple YouTube pour Google) ;
-- Les logiciels utilisés par l'organisation, en interne, pour mener ses opérations tels qu'un système de gestion de la relation client (Pipedrive par exemple), où les interactions entre une entreprise et ses clients sont enregistrées, ou une plateforme d'emailing (Mailjet par exemple) qui envoie des e-mails et mesure leur efficacité ;
-- Des systèmes sources tiers fournissant des informations précieuses pour l'organisation telles que les prévisions météorologiques pour les organisations dont les opérations sont affectées par le climat (l'agroalimentaire par exemple), ou les données financières pour les organisations affectées par les marchés financiers car elles achètent et/ou vendent des matières premières, par exemple.
+- Le logiciel que l'organisation possède, développe et distribue à ses clients dont les actions sur le logiciel peuvent être trackées (par exemple YouTube pour Google) ;
+- Les logiciels utilisés par l'organisation, en interne, pour mener ses opérations tels qu'un système de gestion de la relation client (e.g., Pipedrive), où les interactions entre une entreprise et ses clients sont enregistrées, ou une plateforme d'emailing (e.g., Mailjet) qui automatise l'envoi d'e-mails ;
+- Des systèmes sources tiers fournissant des informations pertinentes pour l'organisation telles que les taux de change pour les organisations commerçant en plusieurs devises, par exemple.
 
-La collecte de données à partir des systèmes sources est le domaine desData Engineers. Ils développent le logiciel nécessaire pour collecter ces données de manière opportune et fiable – c'est le premier « tuyau » du Pipeline de Données. Chaque système source diffère des autres dans une dimension ou une autre. Ces dimensions dans lesquelles les Data Engineers doivent naviguer sont :
+La collecte de données à partir des systèmes sources est le domaine des Data Engineers. Ils développent les logiciels nécessaires pour collecter ces données de manière régulière (i.e., en temps voulu et avec précision) – c'est le premier « tuyau » du Pipeline de Données.
 
-- L'authentification requise pour obtenir la confiance du système source et accéder à ses données,
+Chaque système source diffère des autres dans une dimension ou une autre. Ces dimensions dans lesquelles les Data Engineers doivent naviguer sont :
+
+- L'authentification requise pour obtenir l'accès au système source et accéder à ses données,
 - Le format des données,
 - La vitesse et la fréquence à laquelle elles peuvent être collectées,
-- La façon dont les données peuvent être lues : par exemple, est-il possible de lire uniquement certains enregistrements d'intérêt ou est-il seulement possible de télécharger l'ensemble des données (qui peut être volumineux) complètement ?
-- Le fait que la structure des données peut changer au fil du temps alors que les opérateurs en aval du Pipeline de Données ont besoin de cohérence,
+- La façon dont les données peuvent être lues : par exemple, est-il possible de lire uniquement certains éléments d'intérêt, ou est-il seulement possible de télécharger l'ensemble des données (qui peut être volumineux) ?
+- Le fait que la structure des données peut changer au fil du temps alors que les opérateurs en aval ont besoin d'une certaine stabilité,
 - Etc.
 
-Ils chargent ensuite les données brutes sous forme de tables dans une base de données centralisant toutes les données dont l'organisation souhaite extraire de la valeur. Plusieurs conceptions de bases de données centrales existent, chacune avec ses spécificités, mais une variante courante est le [**Data Warehouse**](https://fr.wikipedia.org/wiki/Entrep%C3%B4t_de_donn%C3%A9es). Il s'agit du principal « entrepot » du Pipeline de Données.
+Une fois la donnée brute extraite des systèmes sources, les Data Engineers la chargent sous forme de tables dans une base de données centralisant toutes les données dont l'organisation souhaite extraire de la valeur. Plusieurs conceptions de bases de données centrales existent, chacune avec ses spécificités, mais une variante courante est le [**Data Warehouse**](https://fr.wikipedia.org/wiki/Entrep%C3%B4t_de_donn%C3%A9es). C'est « l'entrepôt » du Pipeline de Données.
 
 ### Infrastructure
 
-Les Data Engineers sont également responsables de la configuration et de la performance de l'infrstructure sur laquelle repose l'équipe Data : le Data Warehouse utilisé par tous les membres de l'équipe, et les outils d'[informatique décisionnelle](https://fr.wikipedia.org/wiki/Informatique_d%C3%A9cisionnelle) utilisés par les Data Analysts pour créer des dashboards, par exemple.
+Les Data Engineers sont également responsables de la configuration et de la performance de l'infrastructure sur laquelle repose l'équipe Data : le Data Warehouse utilisé par tous les membres de l'équipe, et les outils d'[informatique décisionnelle](https://fr.wikipedia.org/wiki/Informatique_d%C3%A9cisionnelle) utilisés par les Data Analysts pour créer des dashboards, par exemple.
 
 Ils sont aussi responsables du déploiement des modèles prédictifs développés par les Data Scientists (qui sont présentés dans la dernière section).
